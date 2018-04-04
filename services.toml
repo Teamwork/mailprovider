@@ -1,0 +1,128 @@
+# List of common known email providers and their settings. This is kept in a
+# TOML file so it can be used by other programming languages, too.
+#
+# Every [[service]] block can have the following keys; only the name is
+# mandatory:
+#
+# name:        Human-readable name,
+# domains:     Array of domains used in the domain part of emails (e.g.
+#              example.com in martin@example.com.com)
+# public:      Array of public domains anyone can sign up to.
+# mx:          Known MX records. Used to detect custom domains and such.
+#
+# *_host:      Hostname.
+# *_port:      Port number.
+# *_security:  1 ("none"), 2 ("tls"), or 3 ("starttls").
+# *_auth:      1 ("auto"), 2 ("plain"), 3 ("login"), or 4 ("cram-md5").
+#
+
+# TODO: This list could be vastly expanded.
+# https://github.com/mailcheck/mailcheck/wiki/List-of-Popular-Domains
+# https://webmail.wiki/list-of-webmail-domains/
+
+# Gmail
+[[service]]
+name          = "Gmail"
+
+domains       = ["gmail.com"]
+public        = ["gmail.com"]
+mx            = [
+                "alt1.aspmx.l.google.com",
+                "alt1.gmail-smtp-in.l.google.com",
+                "alt2.aspmx.l.google.com",
+                "alt2.gmail-smtp-in.l.google.com",
+                "alt3.gmail-smtp-in.l.google.com",
+                "alt4.gmail-smtp-in.l.google.com",
+                "aspmx.l.google.com",
+                "aspmx2.googlemail.com",
+                "aspmx3.googlemail.com",
+                "gmail-smtp-in.l.google.com",
+                ]
+
+smtp_host     = "smtp.gmail.com"
+smtp_port     = 587
+smtp_security = 3 # "starttls"
+smtp_auth     = 3 # "login"
+
+imap_host     = "imap.gmail.com"
+imap_port     = 993
+imap_security = 2 # "tls"
+
+pop3_host     = "pop.gmail.com"
+pop3_port     = 995
+pop3_security = 2 # "tls"
+
+# Office365
+[[service]]
+name          = "Office365"
+
+domains       = ["office365.com"]
+public        = ["office365.com"]
+mx            = [
+                "mx1.hotmail.com",
+                "mx2.hotmail.com",
+                "mx3.hotmail.com",
+                "mx4.hotmail.com",
+                ]
+
+smtp_host     = "smtp.office365.com"
+smtp_port     = 587
+smtp_security = 3 # "starttls"
+smtp_auth     = 3 # "login"
+
+# Rackspace
+[[service]]
+name          = "Rackspace"
+
+mx            = [
+                "mx1.emailsrvr.com",
+                "mx2.emailsrvr.com",
+                ]
+
+smtp_host     = "smtp.emailsrvr.com"
+smtp_port     = 465
+smtp_security = 2 # "tls"
+smtp_auth     = 3 # "login"
+
+# Mailtrap
+[[service]]
+name          = "Mailtrap"
+
+smtp_host     = "smtp.mailtrap.io"
+smtp_port     = 465
+smtp_security = 3 # "starttls"
+smtp_auth     = 3 # "login"
+
+# Runbox
+[[service]]
+name          = "Runbox"
+
+smtp_host     = "secure.runbox.com"
+smtp_port     = 465
+smtp_security = 2 # "tls"
+smtp_auth     = 3 # "login"
+
+# Yahoo!
+[[service]]
+name          = "Yahoo!"
+
+smtp_host     = "smtp.mail.yahoo.com"
+smtp_port     = 465
+smtp_security = 2 # "tls"
+smtp_auth     = 3 # "login"
+
+# AOL
+[[service]]
+name          = "AOL"
+
+mx            = [
+                "mailin-02.mx.aol.com",
+                "mailin-01.mx.aol.com",
+                "mailin-04.mx.aol.com",
+                "mailin-03.mx.aol.com",
+                ]
+
+smtp_host     = "smtp.aol.com"
+smtp_port     = 465
+smtp_security = 2 # "tls"
+smtp_auth     = 3 # "login"
